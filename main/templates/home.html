@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static "css/style.css" %}"/>
+{% block content %}
+
+
+<div id="home" class="d-block img-fluid animate__animated animate__fadeInBottomLeft" style="background-image: url('{% static 'images/bg.jpg' %}');background-repeat:no-repeat;background-position:center;border-radius:5px;padding:20px 0px 100px 0px;" width='500' height='600'>
+    <div class="bg-overlay black"></div>
+    <div class="container">
+        
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="welcome-text animate__animated animate__fadeInBottomDown" style="z-index: 2;color: white;align-items: center;padding-top: 300px;animation-delay: 3s;">
+                    <div class="" data-wow-delay="0.2s"><h1>Hello, My name is Arinze</h1></div>
+                    <h2 class="">Create A Professional Innovative Application With Us Today</h2>
+                    <!-- <a class="btn btn-outline-success my-2 my-sm-0 btn-lg" data-wow-delay="0.6s" href="#about">Learn more</a> -->
+                    <a  class="btn btn-outline-success my-2 my-sm-0 btn-lg" data-wow-delay="0.6s" href="#contact">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- about -->
+
+
+<h2 class="section-title" style="text-align: center;background-color: rgb(10, 97, 110);font-size: xx-large;color: white;padding: 8px 0px 8px 0px;">About Me</h2>
+
+<div class="abt">
+    <div class="row mb-2">
+        <div class="col-md-6">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="background-color: white;">
+            <div class="thumbnail"> <img src="{{ about.image.url }}" class="rounded-circle account-img" width="100%" style="height: 500px;" > </div>
+        </div>
+        </div>
+        <div class="col-md-6">
+        <div id="style" class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="ml-3 w-100" style="color: black;width: 80%;height: 500px;align-items: center;padding-top: 100px;background-color: white;">
+                <h4 class=""> <strong>Name:</strong> Arinze Timothy Odoh</h4> <span>Freelancer On Python And Web Developer</span>
+                <div class="">
+                    <div class=""> <span class="articles" style="color: black;">{{ about.short_description }}</span> <span class="number1"></span> </div>
+                </div> <br> <strong><h3 style="text-align: center;">What I Know</h3></strong>
+                <p>{{ about.description }}</p> <br>
+                {% for post in file %}
+                <a href="{{post.adminupload.url}}" class="btn btn-danger" download='{{post.adminupload.url}}'>Download CV&nbsp;<i class="fa fa-download"></i></a>
+                {% endfor %}
+                <div class="button mt-2 d-flex flex-row align-items-center"> <a class="btn btn-outline-success my-2 my-sm-0 btn-lg" data-wow-delay="0.6s" href="#contact">Get in touch</a> </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- services section -->
+<div class="section-padding" id="services">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-header text-center">
+                    <h2 style="text-align: center;background-color: rgb(10, 97, 110);font-size: xx-large;color: white;padding: 8px 0px 8px 0px;">Services</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for service in services %}
+
+            <div class="col-md-4 col-sm-4" style="background-color: white;color: black;">
+                <div class="container" data-wow-delay="0.2s">
+                    <i class="icon icon-wallet"></i>
+                    <h2>{{ service.name }}</h2>
+                    <p>{{ service.description }}</p>
+                </div>
+                
+            </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>
+<br>
+<!-- works -->
+
+<div id="portfolio" class="portfolio-area section-padding">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section header">
+                    <h2 style="text-align: center;background-color: rgb(10, 97, 110);font-size: xx-large;color: white;padding: 8px 0px 8px 0px;">My Recent Works</h2>
+                </div>
+            </div>
+        </div>
+        <div class="album py-5 " style="background-color: white;color: black;">
+            <div class="">
+            <div class="row">    
+            {% for recentwork in works %}
+                <div class="col-md-4 col-sm-4 col-xs-12 no-padding">
+                    <div class="thumbnail">
+                        <a class="card mb-4 box-shadow" href="{{ recentwork.image.url}}">
+                            <img class="card-img-top img-responsive" src="{{ recentwork.image.url}}" alt="work image">
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">{{ recentwork.title }}</h2>
+                            <strong><p>{{ recentwork.url }}</p></strong>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div id="testimonials" class="testimonials-area section-padding">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section header">
+                    <h2 style="text-align: center;background-color: rgb(10, 97, 110);font-size: xx-large;color: white;padding: 8px 0px 8px 0px;">Testimonies</h2>
+                </div>
+            </div>
+        </div>
+        <div class="album py-5 " style="background-color: white;color: black;">
+            <div class="">
+                <div class="row">
+                    {% for clients in client %}
+                    <div class="col-md-4 col-sm-4 col-xs-12 no-padding">
+                        <div class="thumbnail">
+                            <a class="card mb-4 box-shadow" href="{{ clients.image.url}}">
+                                <img class="card-img-top img-responsive" src="{{ clients.image.url}}" alt="work image">
+                            </a>
+                            <div class="card-body" style="background-color: white;color: black;">
+                                <h2 class="card-title">{{ clients.name }}</h2>
+                                <h5 style="font-size: medium;"><em><q>{{ clients.description }}</q></em></h5>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img style="width: 100%;height: 500px;" src="{% static 'images/programmer.jpg' %}" alt="Los Angeles">
+        <div class="carousel-caption">
+            <h2>Do you have any project need to be done?</h2>
+                <p>You are just one more step away</p>
+                <a class="btn btn-outline-success btn-lg my-2 my-sm-0" href="#contact" class="my-btn-3">Get started</a>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <img style="width: 100%;height: 500px;" src="{% static 'images/gy.jpg' %}" alt="Chicago">
+        <div class="carousel-caption">
+            <h2>Do you have any project need to be done?</h2>
+                <p>You are just one more step away</p>
+                <a class="btn btn-outline-success btn-lg my-2 my-sm-0" href="#contact" class="my-btn-3">Get started</a>
+          </div>
+      </div>
+      <div class="carousel-item">
+        <img style="width: 100%;height: 500px;" src="{% static 'images/de.jpg' %}" alt="New York">
+        <div class="carousel-caption">
+            <h2>Do you have any project need to be done?</h2>
+                <p>You are just one more step away</p>
+                <a class="btn btn-outline-success btn-lg my-2 my-sm-0" href="#contact" class="my-btn-3">Get started</a>
+          </div>
+      </div>
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  
+  </div>
+  <br>
+<!-- contact -->
+<div class="contact">
+    <div class="row mb-2">
+        <div class="col-md-6">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div style="color: black;background-color: white;width: 100%;height: 500px;padding-top: 90px;" class="single-invite text-center"><br><br><br>
+                <h2>Location</h2>
+                <p>
+                    Digital Dreams ICT Academy (Agbani Rd Office) - Web Design, Mobile & Software Training
+                </p>
+                <p>Top Floor Mardech House, 185 Agbani Rd, Awkunanaw 400002, Enugu</p>
+                <p>Phone Number: +2348136369030</p>
+                <a style="border-radius: 10px;background-color: rgb(10, 97, 110);" class="btn btn-primary btn-lg" href="https://www.google.com/maps/place/Digital+Dreams+ICT+Academy+(Agbani+Rd+Office)+-+Web+Design,+Mobile+%26+Software+Training/@6.411168,7.4937103,17z/data=!3m1!4b1!4m5!3m4!1s0x1044a1895355dec3:0x3132e623a516b37c!8m2!3d6.411168!4d7.495899"> 3d View On Google Maps</a>
+            </div>
+        </div>
+        </div>
+        <div id="contact"  class="col-md-6">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <form id="contact-form" method="POST" action="{% url 'contact' %}" style="width: 100%;height: 500px;padding-top: 30px;background-color: white;">
+                {% csrf_token %}
+                <h2>Contact Us</h2>
+                <div class="messages"></div>
+                <div class="controls">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group wow fadeInDown" data-wow-delay="0.2s">
+                                <input id="form-name" name="massage_name" class="form-control" placeholder="Enter your full name" required='required' data-error='Fullname is required.' type="text">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                    
+                        <div class="col-md-6">
+                            <div class="form-group wow fadeInDown" data-wow-delay="0.2s">
+                                <input id="form-email" name="email" class="form-control" placeholder="Enter your email" required='required' data-error='Fullname is required.' type="email">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group wow fadeInDown" data-wow-delay="0.2s">
+                            <textarea name="massage" id="form-message" class="form-control" placeholder="Your Message" required="required"  data-error="Please leave a message"  rows="10"></textarea>
+                            <div class="help-block with-errors"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button class="btn btn-outline-success my-2 my-sm-0">Send message</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+  <script>
+    window.sr = ScrollReveal();
+    sr.reveal('.d-block', {
+    duration: 2000,
+    origin: 'bottom'
+  });
+  sr.reveal('.abt', {
+    duration: 2000,
+    origin: 'bottom'
+  });
+  sr.reveal('.carousel slide', {
+    duration: 2000,
+    origin: 'bottom'
+  });
+  sr.reveal('.section-padding', {
+    duration: 2000,
+    origin: 'bottom'
+  });
+  sr.reveal('.contact', {
+    duration: 2000,
+    origin: 'bottom'
+  });
+  sr.reveal('.testimonials-area', {
+    duration: 2000,
+    origin: 'bottom'
+  });
+</script>
+{% endblock %}
